@@ -13,7 +13,7 @@ def test(word, guess, alpha,arr, tempList):
                 tempList.append(char2)
             arr[i] = char2
         #letter absent
-        elif(char2 not in word):
+        elif char2 not in word: 
             print("⬛")
             try:
                 alpha.remove(char2)
@@ -76,7 +76,7 @@ def wordle(word):
         test(word, guess, alpha_list,arr,tempList) 
         count -= 1
         
-        if(word == guess):
+        if word == guess:
             print()
             print("*****************************************")
             print("Hurray!!")
