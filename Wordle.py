@@ -7,7 +7,7 @@ def test(word, guess, alpha,arr, tempList):
         char1, char2 = word[i], guess[i]
         print(char2, "-", sep = "", end = "")
         #correct letter, correct position
-        if(char1 == char2): 
+        if char1 == char2: 
             print("🟩")
             if char2 not in tempList:
                 tempList.append(char2)
@@ -31,7 +31,7 @@ def test(word, guess, alpha,arr, tempList):
             for elem in guess[:i]:
                 if elem == char2:
                     g_cnt += 1
-            if(w_cnt - g_cnt > 0):                
+            if w_cnt - g_cnt > 0:                
                 print("🟨")
             else:
                 print("⬛")
@@ -61,12 +61,12 @@ def wordle(word):
     i = 1
     while(i <= 6):
         print("Guesses Left:", count)
-        if(i == 1):
+        if i == 1:
             guess = input("Please Enter Your Guess: ")
         else:
             guess = input("Please Enter Your Next Guess: ")
         
-        if(len(guess) != 5):
+        if len(guess) != 5:
             print("Please enter a valid 5 letter word.") 
             i -= 1
             continue 
