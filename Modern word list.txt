@@ -2314,3 +2314,4 @@ lofty
 enact
 ravel
 decaf
+pager
