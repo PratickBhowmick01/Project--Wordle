@@ -14,15 +14,24 @@ def wordle(wordList):
             # print()
             word = random.choice(wordList)
 
-        print("Suggested word:", word) 
+        print("Suggested word:", word)
+        print("Enter your word: ")
+        while True:
+            word = input().upper()
+            if len(word) != 5:
+                print("Please enter a 5 letter word: ")
+            else:
+                break
 
         # Obtain results. 
         print("Please enter the results: [X-> grey, Y-> Yellow, G-> Green]")
-        res = input().upper()
-        print()
-
-        if len(res) != 5:
-            print("Please enter the results correctly: [X-> grey, Y-> Yellow, G-> Green]")
+        while True:  
+            res = input().upper()
+            print()
+            if len(res) != 5:
+                print("Please enter the results correctly: [X-> grey, Y-> Yellow, G-> Green]")
+            else:
+                break
 
         if res == "GGGGG":
             print("*****************************************")
