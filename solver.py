@@ -9,17 +9,14 @@ def wordle(wordList):
         if i == 0:
             word = "SPARE"
         else:
-            # if len(wordList) > 5:
-            #     for i in range(5): print(wordList[i], end = " ")
-            # print()
             word = random.choice(wordList)
 
         print("Suggested word:", word)
-        print("Enter your word: ")
+        print("Enter your word:", end = " ")
         while True:
             word = input().upper()
             if len(word) != 5:
-                print("Please enter a 5 letter word: ")
+                print("Please enter a 5 letter word:", end = " ")
             else:
                 break
 
@@ -53,7 +50,6 @@ def wordle(wordList):
         for l,ind in green:
             if l in grey:
                 grey.remove(l)
-        # print(grey, yellow, green)
 
         # Remove incorrect words. 
         tempList = []
