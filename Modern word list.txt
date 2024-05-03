@@ -2318,3 +2318,4 @@ pager
 polio
 roman
 inset
+faker
