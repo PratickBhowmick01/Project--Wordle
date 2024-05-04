@@ -2319,3 +2319,4 @@ polio
 roman
 inset
 faker
+schwa
