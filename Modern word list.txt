@@ -2324,3 +2324,4 @@ hoary
 glitz
 jacks
 panda
+usury
