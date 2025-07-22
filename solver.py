@@ -2,7 +2,8 @@ import random
 
 # Designing an algo to solve wordle.
 def wordle(wordList): 
-    grey, yellow, green = [], [], []       
+    grey, yellow, green = [], [], []   
+    count = {}    
 
     for i in range(6):
         # Selecting suggestion.
@@ -16,7 +17,7 @@ def wordle(wordList):
         while True:
             word = input().upper()
             if len(word) != 5:
-                print("Please enter a 5 letter word:", end = " ")
+                print("Please enter a 5 letter word:",end = " ")
             else:
                 break
 
@@ -37,6 +38,7 @@ def wordle(wordList):
             print("*****************************************")
             break
 
+        temp = {}
         for i in range(5):
             if res[i] == "X" and word[i] not in grey and word[i] not in green:
                 grey.append(word[i])
@@ -46,10 +48,23 @@ def wordle(wordList):
             
             elif res[i] == "G" and [word[i],i] not in green:
                 green.append([word[i], i])
+
+            if word[i] in temp:
+                temp[word[i]].append(res[i])
+            else:
+                temp[word[i]] = [res[i]]
+
+        for key, value in temp.items():
+            if len(value) > 1 and "X" in value:
+                dup = value.count("X") 
+                count[key] = len(value) - dup 
+
+        # print(grey, yellow, green)
         
-        for l,ind in green:
+        for l,ind in green+yellow:
             if l in grey:
                 grey.remove(l)
+        
 
         # Remove incorrect words. 
         tempList = []
@@ -75,6 +90,15 @@ def wordle(wordList):
                 if letters not in w or w[ind] != letters:
                     flag = False 
                     break 
+
+            if flag == False:
+                continue
+
+            for key, value in count.items():
+                if key in w:
+                    if w.count(key) != value:
+                        flag = False
+                        break
             
             if flag:
                 tempList.append(w)
