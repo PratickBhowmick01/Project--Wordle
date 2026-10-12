@@ -8,9 +8,12 @@ def wordle(wordList):
     for i in range(6):
         # Selecting suggestion.
         if i == 0:
-            word = "SPARE"
-        else:
+            word = "DREAM"
+        elif len(wordList) >= 1:
             word = random.choice(wordList)
+        else:
+            print("This is a tough one! We shall update our database so we can help you better next time.")
+            return
 
         print("Suggested word:", word)
         print("Enter your word:", end = " ")
@@ -36,7 +39,7 @@ def wordle(wordList):
             print("Hurray!!")
             print("You Have Solved The Wordle!!")
             print("*****************************************")
-            break
+            return
 
         temp = {}
         for i in range(5):
@@ -104,10 +107,14 @@ def wordle(wordList):
                 tempList.append(w)
 
         wordList = tempList.copy()
+        # print(wordList)
+        
+    print("Looks like we couldn't solve it within 6 tries. Here are the remaining possible words:")
+    print(wordList)
 
 
 # Importing the text file -> Storing in a list.  
-fr = open("Modern word list.txt", "r")
+fr = open("Word_list.txt", "r")
 #All valid 5 letter words
 wordList = []
 for elem in fr:
